@@ -25,6 +25,29 @@ export default Service.extend({
                     number: 2
                 }
             ]
+        }, {
+            id: 'inv_' + (Date.now() - 10800000) ,
+            name: 'Flowers Invoice',
+            from: 'Logan Price',
+            to: 'Lando Freeman',
+            total: 500,
+            paid: 200,
+            due: Date.now() - 90000000,
+            items: [
+                {
+                    name: 'Rose Flower',
+                    unitPrice: 200,
+                    number: 2
+                }, {
+                    name: 'Sun Flower',
+                    unitPrice: 150,
+                    number: 2
+                }, {
+                    name: 'Big Bouquet',
+                    unitPrice: 500,
+                    number: 1
+                }
+            ]
         }
     ]
 });

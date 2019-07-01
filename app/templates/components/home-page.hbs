@@ -40,16 +40,16 @@
       <tbody>
         {{#each invoices as |invoice index| }}
             <tr>
-                <th scope="row">{{index}}</th>
+                <th scope="row">{{sum index 1}}</th>
                 <td>{{invoice.name}}<br/>
                     {{#link-to 'view-route' invoice.id}}
                         {{invoice.id}}
                     {{/link-to}}
                 </td>
                 <td>{{invoice.from}} -> {{invoice.to}}</td>
-                <td>{{invoice.due}}</td>
+                <td class="{{overdue invoice.due}}">{{date invoice.due}}</td>
                 <td>${{invoice.total}} ({{invoice.items.length}})</td>
-                <td>${{invoice.paid}} (${{invoice.total - invoice.paid}})</td>
+                <td>${{invoice.paid}} (${{minus invoice.total invoice.paid}})</td>
                 <td>
                     {{#link-to 'view-route' invoice.id class='btn btn-success btn-sm m-1'}}
                         View
@@ -59,22 +59,9 @@
             </tr>
         {{/each}}
         <tr>
-            <th scope="row">1</th>
-            <td>inv2393<br/>inv3443</td>
-            <td>Lando -> Frank</td>
-            <td>22/08/2019</td>
-            <td>$500 (45)</td>
-            <td>$50 ($450)</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-sm">View</button>
-                <button type="button" class="btn btn-danger btn-sm">Remove</button>
-            </td>
-        </tr>
-        <tr>
             <th scope="row" colspan="4"> Total</th>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td></td>
+            <th>${{arraysum invoices}} ({{itemsum invoices}})</th>
+            <th>${{paidsum invoices}} (${{restsum invoices}})</th>
         </tr>
       </tbody>
     </table>
