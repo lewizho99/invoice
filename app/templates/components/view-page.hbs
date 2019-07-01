@@ -1,0 +1,151 @@
+<div class="container mt-5">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">View Invoice</a>
+        {{#link-to 'view-route' 'new' class='nav-item nav-link'}}
+            Save
+        {{/link-to}}
+    </nav>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm1">Name</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Invoice Name">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm2">Id</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Invoice Name" disabled>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm3">From</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="John Doe">
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm4">To</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Frank Doe">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm5">Total($)</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="1000.00">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm6">Paid($)</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="1000.00">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm6">Rest($)</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="1000.00" disabled>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm8">Due</span>
+                        </div>
+                        <input type="date" class="form-control" placeholder="1000.00">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="my-3">Items</h4>
+
+    <div class="container mt-5">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col"># Items</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Actions</th>
+                </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Macbook Pro 2019</td>
+                <td>$2,000.0</td>
+                <td>1</td>
+                <td>$2,000.0</td>
+                <td>
+                    <button type="button" class="btn btn-danger btn-sm">Remove</button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">x</th>
+                <td>
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" class="form-control" placeholder="New Item name">
+                    </div>
+                </td>
+                <td>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm9">$</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="1000.0" aria-describedby="inputGroup-sizing-sm9">
+                    </div>
+            </td>
+                <td>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm9">#</span>
+                        </div>
+                        <input type="number" class="form-control" placeholder="1" aria-describedby="inputGroup-sizing-sm9">
+                    </div>
+                </td>
+                <td>$2,000.0</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-sm">Add</button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" colspan="3"> Total</th>
+                <td>4</td>
+                <td>$4,000.0</td>
+                <td></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+{{yield}}
