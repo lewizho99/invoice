@@ -6,21 +6,16 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">From</span>
                 </div>
-                <input type="date" class="form-control" placeholder="From Date" aria-label="From Date" aria-describedby="basic-addon1">
+                {{input value=fromDate type="date" class="form-control" placeholder="From Date" aria-describedby="basic-addon1"}}
             </div>
             <div class="input-group ml-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon2">To</span>
                 </div>
-                <input type="date" class="form-control" placeholder="To Date" aria-label="To Date" aria-describedby="basic-addon2">
-            </div>
-            <div class="input-group ml-3">
-                <input type="text" class="form-control" placeholder="Filter by name" aria-label="Name" aria-describedby="basic-addon3">
+                {{input value=toDate type="date" class="form-control" placeholder="To Date" aria-describedby="basic-addon2"}}
             </div>
         </form>
-        {{#link-to 'view-route' 'new' class='nav-item nav-link'}}
-            Add Invoice
-        {{/link-to}}
+        <button type="button" {{action 'applyFilter'}} class="nav-item nav-link btn btn-primary">Apply</button>
     </nav>
 </div>
 
@@ -30,8 +25,8 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
-                <th scope="col">From/To</th>
-                <th scope="col">Due</th>
+                <th scope="col">From/ To</th>
+                <th scope="col">Due (Created) </th>
                 <th scope="col">Amount (Items)</th>
                 <th scope="col">Paid (Rest)</th>
                 <th scope="col">Actions</th>
@@ -39,15 +34,20 @@
       </thead>
       <tbody>
         {{#each invoices as |invoice index| }}
-            <tr>
+            <tr class="{{filter fromDate toDate invoice}}">
                 <th scope="row">{{sum index 1}}</th>
                 <td>{{invoice.name}}<br/>
-                    {{#link-to 'view-route' invoice.id}}
-                        {{invoice.id}}
-                    {{/link-to}}
+                    <sup>
+                        {{#link-to 'view-route' invoice.id}}
+                            {{invoice.id}}
+                        {{/link-to}}
+                    </sup>
                 </td>
                 <td>{{invoice.from}} -> {{invoice.to}}</td>
-                <td class="{{overdue invoice.due}}">{{date invoice.due}}</td>
+                <td class="{{overdue invoice.due}}">
+                    {{date invoice.due}} <br/>
+                    <sup>{{date invoice.createdAt}}</sup>
+                </td>
                 <td>${{invoice.total}} ({{invoice.items.length}})</td>
                 <td>${{invoice.paid}} (${{minus invoice.total invoice.paid}})</td>
                 <td>

@@ -10,6 +10,7 @@ export default Service.extend({
             total: 500,
             paid: 0,
             due: Date.now() + 3600000,
+            createdAt: Date.now(),
             items: [
                 {
                     name: 'Macbook Pro 2019',
@@ -26,13 +27,14 @@ export default Service.extend({
                 }
             ]
         }, {
-            id: 'inv_' + (Date.now() - 10800000) ,
+            id: 'inv_' + (Date.now() - 200000000) ,
             name: 'Flowers Invoice',
             from: 'Logan Price',
             to: 'Lando Freeman',
             total: 500,
             paid: 200,
             due: Date.now() - 90000000,
+            createdAt: (Date.now() - 200000000),
             items: [
                 {
                     name: 'Rose Flower',
